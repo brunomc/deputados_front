@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Deputados FrontEnd</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<!--Angular-->
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="./js/app.js"></script>
+	<!--Service-->
+	<script src="./js/services/depService.js"></script>
+	<!--Controller-->
+	<script src="./js/controllers/depController.js"></script>
+</head>
+<body ng-app="appdep">
+	<div class="container">
+		<h1>Lista de Deputados do Brasil</h1>
+	</div>
+	<div ng-controller="depController">
+	<button class="btn-info" ng-click="listar()">Listar Deputados</button>
+	<table class="table">
+		<tr>
+			<td>Nome</td>
+			<td>Data de Nascimento</td>
+			<td>Partido</td>
+			<td>Estado</td>
+			<td>Titular</td>
+			<td>Telefone / Fax</td>
+			<td>Email</td>
+			<td>Legislaturas</td>
+			<td>Endereço</td>
+			<td>Foto</td>
+		</tr>
+		<tr ng-repeat="row in deputados">
+			<td>{{row.fullname}}</td>
+			<td>{{row.birthday}}</td>
+			<td>{{row.party}}</td>
+			<td>{{row.state}}</td>
+			<td ng-if="row.main == 'true'">Sim</td>
+			<td ng-if="row.main == 'false'">Não</td>
+			<td>{{row.phone}} / {{row.fax}}</td>
+			<td>{{row.email}}</td>
+			<td>{{row.legislaturas}}</td>
+			<td>{{row.address}}</td>
+			<td><img src="{{row.img}}" alt=""></td>
+		<tr>
+			
+		</tr>
+	</table>
+	</div>
+</body>
+</html>
